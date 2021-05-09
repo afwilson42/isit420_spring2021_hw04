@@ -3,10 +3,7 @@ var uri = 'api/Orders';
 var wasReady = false;
 
 $(document).ready(function () {
-    $('#saveResponse').text = '';
-    $("#notes").empty();
-    GetShowData();
-    var wasReady = true;
+    //GetShowData();
 });
 
 function GetShowData() {
@@ -16,13 +13,24 @@ function GetShowData() {
             // On success, 'data' contains a list of products.
             $.each(data, function (key, item) {
                 // Add a list item for the product.
-                console.log(key, item);
+                //console.log(key, item);
             });
         });
 }
 
 function getMarkups() {
-
+    $("#notes").empty(); //$('#SearchId').val();
+    $.getJSON('api/Query1/')
+        .done(function (data) {
+            console.log(data);
+            $.each(data, function (key, item) {
+                // Add a list item for the product.
+                $('<li>', { text: 'Store ' + item.StoreID + ':   ' + item.Count + ' CDs over $13.' }).appendTo($('#notes'));
+            });      
+        })
+        .fail(function (jqXHR, textStatus, err) {
+            $('#note1').text('Error: ' + err);
+        });
 }
 
 function getEmpSales() {
@@ -34,7 +42,7 @@ function getStoreSales() {
 }
 
 function formatItem(item) {
-    return item.Priority + ':   ' + item.Subject + ' =>  ' + item.Details;
+    return item.StoreID + ':   ' + item.Count;
 }
 
 function find() {

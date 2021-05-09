@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <title>ISIT420 HW4</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="Scripts/App1.js"></script>
+    
+</head>
+
+
+<body>
+    <h1>Jade and Andrew - HW 4</h1>
+    <div>
+        <h2>Query 1: Which stores are selling CDs for better markups?</h2>
+        <p>Here are the total number of sales per store of CDs sold at more than $13.</p>
+        <input type="button" value="Get Markups" onclick="getMarkups();" />
+        <ul id="notes" />
+        <br />
+    </div>
+
+    <div>
+        <h2>Query 2: I want to check on the performance of an employee.</h2>
+        <p>Shows the total amount in $$ sold for a salesperson for the entire year.</p>
+        <select></select>
+        <input type="button" value="Get Employee Sales" onclick="getEmpSales();" />
+        <p id="note1" />
+    </div>
+
+    <div>
+        <h2>Query 3: I want to see the performance of a store.</h2>
+        <p>Will show the total amount in $$ sold for a single store for the entire year.</p>
+        <select></select>
+        <input type="button" value="Get Store Sales" onclick="getStoreSales();" />
+        <p id="note2" />
+    </div>
+
+</body>
+
+</html>

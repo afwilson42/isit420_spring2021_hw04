@@ -13,6 +13,7 @@ namespace JadeAndrewIsit420HW4.Controllers
 
         List<OrderDto> myOrders = new List<OrderDto>();
 
+
         public IEnumerable<OrderDto> GetAllOrders()
         {
             foreach (Order ord in myDB.Orders)
@@ -23,6 +24,7 @@ namespace JadeAndrewIsit420HW4.Controllers
             
             return myOrders;
         }
+
     }
 
     public class OrderDto
@@ -44,8 +46,6 @@ namespace JadeAndrewIsit420HW4.Controllers
         public int dtoPricePaid { get; set; }
         public int dtoDayPurch { get; set; }
         public int dtoHourPurch { get; set; }
-
     }
-
 }
 

@@ -1,19 +1,30 @@
 ﻿
 var uri = 'api/Orders';
-var wasReady = false;
 
 $(document).ready(function () {
-    //GetShowData();
+    GetSalesPersonDropdown();
+    GetStoreDropdown();
 });
 
-function GetShowData() {
-    // Send an AJAX request
-    $.getJSON(uri)
+function GetSalesPersonDropdown() {
+    $.getJSON('api/Query2')
         .done(function (data) {
             // On success, 'data' contains a list of products.
             $.each(data, function (key, item) {
                 // Add a list item for the product.
-                //console.log(key, item);
+                $('<option id=' + item.dtoSalesPersonID + '>' + item.dtoFirstName + " " + item.dtoLastName + '</option>').appendTo($('#spDropdown'));
+            });
+        });
+}
+
+function GetStoreDropdown() {
+    $.getJSON('api/Query3')
+        .done(function (data) {
+            // On success, 'data' contains a list of products.
+            $.each(data, function (key, item) {
+                // Add a list item for the product.
+                console.log(item.dtoStoreID);
+                $('<option id=' + item.dtoStoreID + '>' + item.dtoCity + '</option>').appendTo($('#storeDropdown'));
             });
         });
 }
@@ -34,17 +45,29 @@ function getMarkups() {
 }
 
 function getEmpSales() {
+    //alert($('#spDropdown option:selected').attr('id'));
+    var id = $('#spDropdown option:selected').attr('id');
+    $.getJSON('api/Query2/' + id)
+        .done(function (data) {
+            //$('#note').text(formatItem(data));
+            console.log(data);
+        })
+        .fail(function (jqXHR, textStatus, err) {
+            $('#note').text('Error: ' + err);
+        });
 
 }
 
 function getStoreSales() {
-
+    alert($('#storeDropdown option:selected').attr('id'));
 }
+
 
 function formatItem(item) {
     return item.StoreID + ':   ' + item.Count;
 }
 
+/*
 function find() {
     $('#saveResponse').text = '';
     $("#notes").empty();
@@ -107,3 +130,5 @@ function deleteNote() {
         }
     });
 };
+
+*/

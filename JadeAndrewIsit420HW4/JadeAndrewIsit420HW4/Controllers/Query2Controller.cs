@@ -11,9 +11,7 @@ namespace JadeAndrewIsit420HW4.Controllers
     {
         NodeOrdersDBEntities myDB = new NodeOrdersDBEntities();
 
-        List<OrderDto> myOrders = new List<OrderDto>();
         List<SalesPersonDto> mySalesPeople = new List<SalesPersonDto>();
-
 
         public IHttpActionResult GetSalesPeople()
         {
@@ -29,16 +27,17 @@ namespace JadeAndrewIsit420HW4.Controllers
         // Rework this so that it returns sum total sales rather than a list of them.
         public IHttpActionResult GetSalesBySalesperson(int id)
         {
+            int spSales = 0;
+
             foreach (Order ord in myDB.Orders)
             {
-                OrderDto myOrder = new OrderDto(ord.ordersID, ord.storeID, ord.salesPersonID, ord.cdID, ord.pricePaid, ord.dayPurch, ord.hourPurch);
-                if (myOrder.dtoSalesPersonID == id)
+                if (ord.salesPersonID == id)
                 {
-                    myOrders.Add(myOrder);
+                    spSales += ord.pricePaid;
                 }
             }
 
-            return Json(myOrders);
+            return Json(spSales);
         }
     }
 

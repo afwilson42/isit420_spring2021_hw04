@@ -11,7 +11,6 @@ namespace JadeAndrewIsit420HW4.Controllers
     {
         NodeOrdersDBEntities myDB = new NodeOrdersDBEntities();
 
-        List<OrderDto> myOrders = new List<OrderDto>();
         List<StoreDto> myStores = new List<StoreDto>();
 
 
@@ -27,7 +26,23 @@ namespace JadeAndrewIsit420HW4.Controllers
         }
 
         // Create a function which returns a sum of sales for a store. 
+        public IHttpActionResult GetSalesByStore(int id)
+        {
+            int storeSales = 0;
+
+            foreach (Order ord in myDB.Orders)
+            {
+                if (ord.storeID == id)
+                {
+                    storeSales += ord.pricePaid;
+                }
+            }
+
+            return Json(storeSales);
+        }
     }
+
+    
 
     public class StoreDto
     {

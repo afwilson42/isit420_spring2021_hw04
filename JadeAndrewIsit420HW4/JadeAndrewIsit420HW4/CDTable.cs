@@ -17,6 +17,7 @@ namespace JadeAndrewIsit420HW4
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CDTable()
         {
+            this.Inventories = new HashSet<Inventory>();
             this.Orders = new HashSet<Order>();
         }
     
@@ -27,6 +28,8 @@ namespace JadeAndrewIsit420HW4
         public int YearReleased { get; set; }
         public decimal ListPrice { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Inventory> Inventories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
     }

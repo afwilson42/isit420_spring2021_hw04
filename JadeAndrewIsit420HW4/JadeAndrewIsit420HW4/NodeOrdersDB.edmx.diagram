@@ -6,14 +6,17 @@
     <edmx:Diagrams>
       <Diagram DiagramId="b0763802aac94d2da7161b133f57d668" Name="Diagram1">
         <EntityTypeShape EntityType="NodeOrdersDBModel.CDTable" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="NodeOrdersDBModel.Order" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="NodeOrdersDBModel.SalesPersonTable" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="NodeOrdersDBModel.StoreTable" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <AssociationConnector Association="NodeOrdersDBModel.FK_Orders_CDTable" ManuallyRouted="false" />
-        <AssociationConnector Association="NodeOrdersDBModel.FK_Orders_SalesPersonTable" ManuallyRouted="false" />
-        <AssociationConnector Association="NodeOrdersDBModel.FK_Orders_StoreTable" ManuallyRouted="false" />
         <AssociationConnector Association="NodeOrdersDBModel.FK_SalesPersonTable_StoreTable" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="NodeOrdersDBModel.Inventory" Width="1.5" PointX="5.25" PointY="1.25" />
+        <EntityTypeShape EntityType="NodeOrdersDBModel.sysdiagram" Width="1.5" PointX="7.375" PointY="0.75" />
+        <AssociationConnector Association="NodeOrdersDBModel.FK_Inventory_CDTable" />
+        <EntityTypeShape EntityType="NodeOrdersDBModel.Order" Width="1.5" PointX="5.25" PointY="4.5" />
+        <AssociationConnector Association="NodeOrdersDBModel.FK_Orders_CDTable" />
+        <AssociationConnector Association="NodeOrdersDBModel.FK_Orders_SalesPersonTable" />
+        <AssociationConnector Association="NodeOrdersDBModel.FK_Orders_StoreTable" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

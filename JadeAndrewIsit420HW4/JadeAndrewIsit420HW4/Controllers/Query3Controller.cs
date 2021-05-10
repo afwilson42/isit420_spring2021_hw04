@@ -14,7 +14,7 @@ namespace JadeAndrewIsit420HW4.Controllers
         List<OrderDto> myOrders = new List<OrderDto>();
         List<StoreDto> myStores = new List<StoreDto>();
 
-
+        /* populates the dropdown menu at app launch */
         public IHttpActionResult GetStores()
         {
             foreach (StoreTable s in myDB.StoreTables)
@@ -26,7 +26,19 @@ namespace JadeAndrewIsit420HW4.Controllers
             return Json(myStores);
         }
 
-        // Create a function which returns a sum of sales for a store. 
+        /* finds the sum of sales in year for selected store */ 
+        public IHttpActionResult GetSalesByStore(int id)
+        {
+            int storeSalesTotal = 0;
+            foreach (Order ord in myDB.Orders)
+            {
+                if (ord.storeID == id)
+                {
+                    storeSalesTotal += ord.pricePaid;
+                }
+            }
+            return Json(storeSalesTotal);
+        }
     }
 
     public class StoreDto

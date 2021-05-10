@@ -26,8 +26,10 @@ namespace JadeAndrewIsit420HW4
         }
     
         public virtual DbSet<CDTable> CDTables { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<SalesPersonTable> SalesPersonTables { get; set; }
         public virtual DbSet<StoreTable> StoreTables { get; set; }
+        public virtual DbSet<Inventory> Inventories { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     }
 }

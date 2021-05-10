@@ -11,6 +11,14 @@
     <Property Name="YearReleased" Type="int" Nullable="false" />
     <Property Name="ListPrice" Type="money" Nullable="false" />
   </EntityType>
+  <EntityType Name="Inventory">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cdID" Type="int" Nullable="false" />
+    <Property Name="ItemQuantity" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Orders">
     <Key>
       <PropertyRef Name="ordersID" />
@@ -42,6 +50,28 @@
     <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="NumberEmployees" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Inventory_CDTable">
+    <End Role="CDTable" Type="Self.CDTable" Multiplicity="1" />
+    <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CDTable">
+        <PropertyRef Name="cdID" />
+      </Principal>
+      <Dependent Role="Inventory">
+        <PropertyRef Name="cdID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Orders_CDTable">
     <End Role="CDTable" Type="Self.CDTable" Multiplicity="1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -92,9 +122,15 @@
   </Association>
   <EntityContainer Name="NodeOrdersDBModelStoreContainer">
     <EntitySet Name="CDTable" EntityType="Self.CDTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SalesPersonTable" EntityType="Self.SalesPersonTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StoreTable" EntityType="Self.StoreTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Inventory_CDTable" Association="Self.FK_Inventory_CDTable">
+      <End Role="CDTable" EntitySet="CDTable" />
+      <End Role="Inventory" EntitySet="Inventory" />
+    </AssociationSet>
     <AssociationSet Name="FK_Orders_CDTable" Association="Self.FK_Orders_CDTable">
       <End Role="CDTable" EntitySet="CDTable" />
       <End Role="Orders" EntitySet="Orders" />

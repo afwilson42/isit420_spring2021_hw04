@@ -17,8 +17,8 @@ namespace JadeAndrewIsit420HW4
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public StoreTable()
         {
-            this.Orders = new HashSet<Order>();
             this.SalesPersonTables = new HashSet<SalesPersonTable>();
+            this.Orders = new HashSet<Order>();
         }
     
         public int storeID { get; set; }
@@ -27,8 +27,8 @@ namespace JadeAndrewIsit420HW4
         public int NumberEmployees { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesPersonTable> SalesPersonTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

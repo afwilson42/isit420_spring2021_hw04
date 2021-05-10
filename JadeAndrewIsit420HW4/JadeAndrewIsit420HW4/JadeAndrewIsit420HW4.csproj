@@ -172,6 +172,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Inventory.cs">
+      <DependentUpon>NodeOrdersDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="NodeOrdersDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -195,6 +198,9 @@
       <DependentUpon>NodeOrdersDB.tt</DependentUpon>
     </Compile>
     <Compile Include="StoreTable.cs">
+      <DependentUpon>NodeOrdersDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>NodeOrdersDB.tt</DependentUpon>
     </Compile>
   </ItemGroup>
